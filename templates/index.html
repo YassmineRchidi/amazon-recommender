@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <title>Amazon Recommender</title>
+</head>
+<body>
+    <h1>Recommender System</h1>
+    <form method="POST">
+        <label for="user">Choisissez un utilisateur :</label>
+        <select name="user">
+            {% for user in users %}
+                <option value="{{ user }}">{{ user }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Recommander">
+    </form>
+
+    {% if recommendations %}
+        <h2>Recommandations :</h2>
+        <ul>
+            {% for item in recommendations %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
