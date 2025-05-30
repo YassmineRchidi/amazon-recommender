@@ -1,28 +1,50 @@
 <!doctype html>
 <html>
+
 <head>
     <title>Amazon Recommender</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-    <h1>Recommender System</h1>
-    <form method="POST">
-        <label for="user">Choisissez un utilisateur :</label>
-        <select name="user" id="user">
-            {% for user in users %}
-                <option value="{{ user }}">{{ user }}</option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="Recommander">
-    </form>
 
-    {% if recommendations %}
-        <h2>Recommandations :</h2>
-        <ul>
-            {% for item in recommendations %}
-                <li>{{ item }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+<body>
+    <main class="container">
+        <h1>Recommender System</h1>
+        <form method="POST" class="form-user">
+            <div class="flex-row">
+                <div class="user-select">
+                    <label for="user">Choisissez un utilisateur :</label>
+                    <select name="user" id="user">
+                        {% for user in users %}
+                        <option value="{{ user }}">{{ user }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Recommander">
+                </div>
+
+                {% if recommendations %}
+                <section class="recommendations">
+                    <h2>Recommandations :</h2>
+                    <div class="grid-recommendations">
+                        {% for item in recommendations %}
+                        <div class="recommendation-card">
+                            <h3 style="margin: 0; font-size: 1.1em; color: #333;">{{ item }}</h3>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endif %}
+
+
+
+
+
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>© 2025 Amazon Recommender</p>
+    </footer>
 </body>
+
 </html>
